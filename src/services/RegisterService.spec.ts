@@ -11,7 +11,7 @@ describe('Register Service', () => {
             if(err) {
                 done(err);
             }
-            registerService = new RegisterService(account);
+            registerService = RegisterService.getInstance(account);
             done();
         });
     });
@@ -24,7 +24,7 @@ describe('Register Service', () => {
 
     it('send email', done => {
         const mailOptions = {
-            from: 'mobile-command-center@gmail.com',
+            from: 'rladlsrl89@gmail.com',
             to: 'myraous@gmail.com',
             subject: '가입신청서',
             text: '테스트'

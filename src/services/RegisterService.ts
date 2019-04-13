@@ -4,23 +4,30 @@ export default class RegisterService {
     private _user: string;
     private _pass: string;
     private _transporter: nodemailer.Transporter;
+    private static _instance: RegisterService;
 
-    constructor(options: {user: string, pass: string}) {
+    public static getInstance(options: {user: string, pass: string}): RegisterService {
+        if(!this._instance) {
+            this._instance = new RegisterService(options);
+        }
+
+        return this._instance;
+    }
+
+    private constructor(options: {user: string, pass: string}) {
         this._user = options.user;
         this._pass = options.pass;
 
         this._transporter = nodemailer.createTransport({
-            host: "smtp.ethereal.email",
-            port: 587,
-            secure: false,
+            service: 'gmail',
             auth: {
-                user: this._user,
-                pass: this._pass
+                user: options.user,
+                pass: options.pass
             }
         });
     }
 
-    public verifyConnection() {
+    public async verifyConnection() {
         return new Promise((resolve, reject) => {
             this._transporter.verify(function(error, success) {
                 if (error) {
@@ -32,7 +39,7 @@ export default class RegisterService {
             });
         })
     }
-    public sendMail(mailOptions: {from: string, to: string, subject: string, text: string}): Promise<any> {
+    public async sendMail(mailOptions: {from: string, to: string, subject: string, text: string}): Promise<any> {
         if(!this._transporter) return;
 
         return new Promise((resolve, reject) => {
