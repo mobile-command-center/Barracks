@@ -5,8 +5,14 @@
   "main": "index.ts",
   "scripts": {
     "test": "mocha --config ./.mocharc.json",
-    "dev": "nodemon --exec 'ts-node' src/index.ts",
+    "dev": "nodemon --exec 'ts-node' src/index.ts --resolveJsonModule",
     "start": "ts-node ./src/index.ts"
+  },
+  "mailInfo": {
+    "user": "rladlsrl89@gmail.com",
+    "pass": "vmflsxj1!",
+    "from": "rladlsrl89@gmail.com",
+    "to": "rladlsrl892@gmail.com"
   },
   "repository": {
     "type": "git",
