@@ -1,7 +1,55 @@
 import * as nodemailer from 'nodemailer';
-import RegisterService, { RegisterServiceOptions } from './RegisterService';
+import RegisterService from './RegisterService';
+import originFormData from '../model/originFormData';
 import * as fs from 'fs';
+import RegisterDTO from '../model/RegisterDTO';
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'))
+
+const LGSampleData: originFormData = {
+    vendor: 'LG',
+    telephone_carrier_move_chk: 'true',
+    c_name: '김진구',
+    c_tel2_type: 'SK',
+    c_tel21: '010',
+    c_tel22: '0323',
+    c_tel23: '3564',
+    g_auth: 'true',
+    c_tel11: '070',
+    c_tel12: '4123',
+    c_tel13: '6321',
+    c_email1: 'myraous',
+    c_email2: 'msn.com',
+    emailCheck: 'msn.com',
+    c_zipcode1: '463',
+    c_zipcode2: '894',
+    c_address: '경기 성남시 분당구 동판교로',
+    c_jumin1: '880512',
+    g_payment_method: '카드',
+    g_bank_cd: '3',
+    g_bank_no: '620-209007-853',
+    g_bank_holder: '김진구',
+    g_card_cd: '14',
+    g_card_no: '123123',
+    g_card_gigan: '11',
+    g_card_gigan1: '2',
+    g_card_holder: '김진구',
+    content_copy: 'Y',
+    g_sp_bank_code: '3',
+    g_sp_bank_acount: '620-2023307-853',
+    g_sp_bank_holder: '김진구',
+    board_internet: '와이파이기본_광랜안심(100M)',
+    board_tv: 'TV베이직 - 183채널',
+    board_tel: 'WiFi(무선)전화 - 번호이동Y',
+    board_settop: 'UHD셋탑',
+    board_wifi: '신청',
+    g_code_promise: '3년약정',
+    g_move_company: 'LG',
+    g_move_tel1: '010-4073-2101',
+    g_move_auth: '지로납부 뒤 네자리',
+    g_move_no: '2323',
+    g_bigo: '비고란이다 ㅎㅎㅎ',
+    w_agree: 'true'
+}
 
 describe('Register Service', () => {
     let registerService: RegisterService;
@@ -16,8 +64,6 @@ describe('Register Service', () => {
             registerService = RegisterService.getInstance({
                 user: pkg.mailInfo.user,
                 pass: pkg.mailInfo.pass,
-                from: pkg.mailInfo.from,
-                to: pkg.mailInfo.to
             });
             done();
         });
@@ -33,11 +79,10 @@ describe('Register Service', () => {
         const mailOptions = {
             from: 'rladlsrl89@gmail.com',
             to: 'myraous@gmail.com',
-            subject: '가입신청서',
-            text: '테스트'
         };
 
-        registerService.sendEmail().then((info) => {
+        registerService.setRegisterDTO(new RegisterDTO(LGSampleData));
+        registerService.sendEmail(mailOptions).then((info) => {
             console.log(info);
             done();
         });
