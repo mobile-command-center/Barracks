@@ -4,7 +4,7 @@
   "description": "가입신청 API",
   "main": "index.ts",
   "scripts": {
-    "test": "nyc mocha --config ./.mocharc.json",
+    "test": "mocha --config ./.mocharc.json",
     "dev": "nodemon --exec 'ts-node' src/index.ts",
     "start": "ts-node ./src/index.ts"
   },
