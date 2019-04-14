@@ -17,14 +17,8 @@ app.use(bodyParser.urlencoded({
 
 app.post('/command-center/v1/register', upload.none(), function(req, res) {
   const registerService = RegisterService.getInstance(pkg.mailInfo);
-
-  console.log(req.body);
-  registerService.sendMail({
-    from: pkg.mailInfo.from,
-    to: pkg.mailInfo.to,
-    subject: `${req.body.c_name}가입 신청서`,
-    text: '가입 신청서 샘플이요'
-  });
+  registerService.setReuqestBody(req.body);
+  registerService.sendEmail();
   res.send('가입 신청서가 성공적으로 전송되었습니다.');
 })
 

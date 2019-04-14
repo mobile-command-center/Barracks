@@ -1,5 +1,7 @@
 import * as nodemailer from 'nodemailer';
-import RegisterService from './RegisterService';
+import RegisterService, { RegisterServiceOptions } from './RegisterService';
+import * as fs from 'fs';
+const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'))
 
 describe('Register Service', () => {
     let registerService: RegisterService;
@@ -11,7 +13,12 @@ describe('Register Service', () => {
             if(err) {
                 done(err);
             }
-            registerService = RegisterService.getInstance(account);
+            registerService = RegisterService.getInstance({
+                user: pkg.mailInfo.user,
+                pass: pkg.mailInfo.pass,
+                from: pkg.mailInfo.from,
+                to: pkg.mailInfo.to
+            });
             done();
         });
     });
@@ -30,7 +37,8 @@ describe('Register Service', () => {
             text: '테스트'
         };
 
-        registerService.sendMail(mailOptions).then(() => {
+        registerService.sendEmail().then((info) => {
+            console.log(info);
             done();
         });
     }).timeout(5000);

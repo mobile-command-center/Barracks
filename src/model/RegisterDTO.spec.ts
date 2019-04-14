@@ -112,6 +112,6 @@ describe('RegisterDTO', () => {
         expect(telephoneContractInfo.carrier).to.equal(LGSampleData.g_move_company);
         expect(telephoneContractInfo.phoneNumber).to.equal(LGSampleData.g_move_tel1);
         expect(telephoneContractInfo.authMethod).to.equal(LGSampleData.g_move_auth);
-        expect(telephoneContractInfo.authCode).to.equal(LGSampleData.g_move_no);
+        expect(telephoneContractInfo.authCode).to.equal(Number(LGSampleData.g_move_no));
     });
 })
