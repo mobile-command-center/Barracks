@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-app.post('/baraccks/v1/register', upload.none(), function(req, res) {
+app.post('/barracks/v1/register', upload.none(), function(req, res) {
   const registerDTO = new RegisterDTO(req.body);
   const registerService = RegisterService.getInstance(pkg.mailInfo);
   registerService.setRegisterDTO(registerDTO);
