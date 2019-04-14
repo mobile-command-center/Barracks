@@ -20,9 +20,11 @@ app.post('/barracks/v1/register', upload.none(), function(req, res) {
   const registerDTO = new RegisterDTO(req.body);
   const registerService = RegisterService.getInstance(pkg.mailInfo);
   registerService.setRegisterDTO(registerDTO);
-  registerService.sendEmail(pkg.mailInfo).then(() => {
+  registerService.sendEmail(pkg.mailInfo).then((info) => {
+    console.log(info);
     res.send('가입 신청서가 성공적으로 전송되었습니다.');
   }).catch((error) => {
+    console.error(error);
     res.send('신청서 작성에 실패 하였습니다.');
   })
 })
