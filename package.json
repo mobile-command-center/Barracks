@@ -5,7 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "test": "mocha --config ./.mocharc.json",
-    "dev": "nodemon --exec 'ts-node' src/index.ts --resolveJsonModule",
+    "dev": "nodemon --exec 'ts-node' src/index.ts",
     "start": "ts-node ./src/index.ts"
   },
   "mailInfo": {
@@ -43,6 +43,10 @@
     "typescript": "^3.4.2"
   },
   "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.6",
+    "chai": "^4.2.0",
+    "mocha": "^6.1.2",
     "nodemon": "^1.18.10"
   }
 }
