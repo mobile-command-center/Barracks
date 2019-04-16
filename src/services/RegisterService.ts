@@ -19,10 +19,16 @@ export default class RegisterService {
 
     private constructor(options: {user: string, pass: string}) {
         this._transporter = nodemailer.createTransport({
-            service: 'gmail',
+            host: "smtp.gmail.com",
+            port: 465,
+            secure: true,
             auth: {
+                type: 'oauth2',
                 user: options.user,
-                pass: options.pass
+                clientId: '839828522683-l1879dc5to3idv2kbh9517agnik264ne.apps.googleusercontent.com',
+                clientSecret: '_2A_AMfafW8ns-SmUAYjjg3L',
+                refreshToken: '1/Lco8rqEBpSV-kdlwXWxdkkiJrtw4MJHOHgTIoQQCCKk',
+                accessToken: 'ya29.GlvtBpWXS-uq9xPvJveMIK8MD0LrEJFU1uFGSWvKO7ENcpZVwAEPPB8MyyeJRWcn3jQOdcQtfSi1l6gYIOy2WYaNh8Gx1H1IcMZSFHHLOv_B63-l2EGt19scJa4o'
             }
         });
     }
