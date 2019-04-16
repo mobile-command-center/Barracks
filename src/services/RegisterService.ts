@@ -19,7 +19,9 @@ export default class RegisterService {
 
     private constructor(options: {user: string, pass: string}) {
         this._transporter = nodemailer.createTransport({
-            service: 'gmail',
+            host: "smtp.gmail.com",
+            port: 465,
+            secure: true,
             auth: {
                 user: options.user,
                 pass: options.pass
