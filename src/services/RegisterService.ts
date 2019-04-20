@@ -1,8 +1,9 @@
 import * as nodemailer from 'nodemailer';
 import * as moment from 'moment';
+import * as aws from 'aws-sdk';
 import {v1 as uuidv1} from 'uuid';
 import RegisterDTO from '../model/RegisterDTO';
-import originFormData from '../model/originFormData';
+aws.config.loadFromPath(__dirname+'/../resources/aws_config.json');
 
 export default class RegisterService {
     private static _instance: RegisterService;
@@ -19,11 +20,9 @@ export default class RegisterService {
 
     private constructor(options: {user: string, pass: string}) {
         this._transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                user: options.user,
-                pass: options.pass
-            }
+            SES: new aws.SES({
+                apiVersion: '2010-12-01'
+            })
         });
     }
 

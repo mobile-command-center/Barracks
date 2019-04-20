@@ -77,7 +77,7 @@ describe('Register Service', () => {
 
     it('send email', done => {
         const mailOptions = {
-            from: 'rladlsrl89@gmail.com',
+            from: 'support@ajungweb.co.kr',
             to: 'myraous@gmail.com',
         };
 
