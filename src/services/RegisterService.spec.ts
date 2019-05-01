@@ -24,6 +24,7 @@ const LGSampleData: originFormData = {
     c_zipcode2: '894',
     c_address: '경기 성남시 분당구 동판교로',
     c_jumin1: '880512',
+    c_jumin2: '1674326',
     g_payment_method: '카드',
     g_bank_cd: '3',
     g_bank_no: '620-209007-853',
@@ -78,7 +79,7 @@ describe('Register Service', () => {
     it('send email', done => {
         const mailOptions = {
             from: 'support@ajungweb.co.kr',
-            to: 'myraous@gmail.com',
+            to: 'myraous@naver.com',
         };
 
         registerService.setRegisterDTO(new RegisterDTO(LGSampleData));

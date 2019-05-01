@@ -22,6 +22,7 @@ const LGSampleData: originFormData = {
     c_zipcode2: '894',
     c_address: '경기 성남시 분당구 동판교로',
     c_jumin1: '880512',
+    c_jumin2: '1682317',
     g_payment_method: '카드',
     g_bank_cd: '3',
     g_bank_no: '620-209007-853',
@@ -70,7 +71,7 @@ describe('RegisterDTO', () => {
         expect(customerInfo.email).to.equal(`${LGSampleData.c_email1}@${LGSampleData.c_email2}`);
         expect(customerInfo.zipCode).to.equal(`${LGSampleData.c_zipcode1}-${LGSampleData.c_zipcode2}`);
         expect(customerInfo.address).to.equal(LGSampleData.c_address);
-        expect(customerInfo.birthDate).to.equal(Number(LGSampleData.c_jumin1));
+        expect(customerInfo.securityNumber).to.equal(`${LGSampleData.c_jumin1}${LGSampleData.c_jumin2}`);
     });
 
     it('getter PaymentInfo', () => {

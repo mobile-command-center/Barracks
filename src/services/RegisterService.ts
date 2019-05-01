@@ -42,7 +42,7 @@ export default class RegisterService {
 
             <h3>가입자 정보</h3>
             가입자명 : ${customerInfo.name}<br>
-            생년월일 : ${customerInfo.birthDate} <br>
+            주민번호 : ${customerInfo.securityNumber.substr(0, 6)}-${customerInfo.securityNumber.substr(6)}<br>
             휴대폰 : ${customerInfo.mobileCarrier} ${customerInfo.mobileNumber} (${customerInfo.mobileAuth ? '본인': '본안아님'}) <br>
             비상연락처 : ${customerInfo.emgencyNumber} <br>
             이메일 : ${customerInfo.email} <br>
