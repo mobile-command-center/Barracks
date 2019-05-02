@@ -24,6 +24,7 @@ const LGSampleData: originFormData = {
     c_zipcode2: '894',
     c_address: '경기 성남시 분당구 동판교로',
     c_jumin1: '880512',
+    c_jumin2: '1674326',
     g_payment_method: '카드',
     g_bank_cd: '3',
     g_bank_no: '620-209007-853',
@@ -34,9 +35,11 @@ const LGSampleData: originFormData = {
     g_card_gigan1: '2',
     g_card_holder: '김진구',
     content_copy: 'Y',
+    g_sp_method: '상품권',
     g_sp_bank_code: '3',
     g_sp_bank_acount: '620-2023307-853',
     g_sp_bank_holder: '김진구',
+    g_sp_giftcard_code: '1',
     board_internet: '와이파이기본_광랜안심(100M)',
     board_tv: 'TV베이직 - 183채널',
     board_tel: 'WiFi(무선)전화 - 번호이동Y',
@@ -78,7 +81,7 @@ describe('Register Service', () => {
     it('send email', done => {
         const mailOptions = {
             from: 'support@ajungweb.co.kr',
-            to: 'myraous@gmail.com',
+            to: 'myraous@naver.com',
         };
 
         registerService.setRegisterDTO(new RegisterDTO(LGSampleData));

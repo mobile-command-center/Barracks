@@ -1,7 +1,7 @@
 import {expect} from 'chai';
 import originFormData from './originFormData';
 import RegisterDTO, { CustomerInfo, ProductInfo, PaybackInfo, PaymentInfo, TelephoneContractInfo } from './RegisterDTO';
-import { getBankNameByBankCode, getCardNameByCardCode } from '../util/FinancialUtil';
+import { getBankNameByBankCode, getCardNameByCardCode, getGiftCardNameByCode } from '../util/FinancialUtil';
 
 const LGSampleData: originFormData = {
     vendor: 'LG',
@@ -22,6 +22,7 @@ const LGSampleData: originFormData = {
     c_zipcode2: '894',
     c_address: '경기 성남시 분당구 동판교로',
     c_jumin1: '880512',
+    c_jumin2: '1682317',
     g_payment_method: '카드',
     g_bank_cd: '3',
     g_bank_no: '620-209007-853',
@@ -32,9 +33,11 @@ const LGSampleData: originFormData = {
     g_card_gigan1: '2',
     g_card_holder: '김진구',
     content_copy: 'Y',
+    g_sp_method: '사은품',
     g_sp_bank_code: '3',
     g_sp_bank_acount: '620-2023307-853',
     g_sp_bank_holder: '김진구',
+    g_sp_gitcard_code: '1',
     board_internet: '와이파이기본_광랜안심(100M)',
     board_tv: 'TV베이직 - 183채널',
     board_tel: 'WiFi(무선)전화 - 번호이동Y',
@@ -70,7 +73,7 @@ describe('RegisterDTO', () => {
         expect(customerInfo.email).to.equal(`${LGSampleData.c_email1}@${LGSampleData.c_email2}`);
         expect(customerInfo.zipCode).to.equal(`${LGSampleData.c_zipcode1}-${LGSampleData.c_zipcode2}`);
         expect(customerInfo.address).to.equal(LGSampleData.c_address);
-        expect(customerInfo.birthDate).to.equal(Number(LGSampleData.c_jumin1));
+        expect(customerInfo.securityNumber).to.equal(`${LGSampleData.c_jumin1}${LGSampleData.c_jumin2}`);
     });
 
     it('getter PaymentInfo', () => {
@@ -100,9 +103,11 @@ describe('RegisterDTO', () => {
     it('getter PaybackInfo', () => {
         const paybackInfo: PaybackInfo = registerDTO.PaybackInfo;
 
+        expect(paybackInfo.paybackMethod).to.equal(LGSampleData.g_sp_method);
         expect(paybackInfo.bankName).to.equal(getBankNameByBankCode(Number(LGSampleData.g_sp_bank_code)));
         expect(paybackInfo.accountNumber).to.equal(LGSampleData.g_sp_bank_acount);
         expect(paybackInfo.accountHolder).to.equal(LGSampleData.g_sp_bank_holder);
+        expect(paybackInfo.giftCardName).to.equal(getGiftCardNameByCode(Number(LGSampleData.g_sp_gitcard_code)));
     });
 
     it('getter TelephoneContractInfo', () => {

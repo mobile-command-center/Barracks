@@ -1,5 +1,5 @@
 import originFormData from './originFormData';
-import { getBankNameByBankCode, getCardNameByCardCode } from '../util/FinancialUtil';
+import { getBankNameByBankCode, getCardNameByCardCode, getGiftCardNameByCode } from '../util/FinancialUtil';
 
 export default class RegisterDTO {
     private formData: originFormData;
@@ -26,7 +26,7 @@ export default class RegisterDTO {
             email: `${this.formData.c_email1}@${this.formData.c_email2}`,
             zipCode: `${this.formData.c_zipcode1}-${this.formData.c_zipcode2}`,
             address: this.formData.c_address,
-            birthDate: Number(this.formData.c_jumin1)
+            securityNumber: `${this.formData.c_jumin1}${this.formData.c_jumin2}`
         }
     }
 
@@ -60,9 +60,11 @@ export default class RegisterDTO {
      */
     public get PaybackInfo(): PaybackInfo {
         return {
+            paybackMethod: this.formData.g_sp_method,
             bankName : getBankNameByBankCode(Number(this.formData.g_sp_bank_code)),
             accountNumber : this.formData.g_sp_bank_acount,
-            accountHolder : this.formData.g_sp_bank_holder
+            accountHolder : this.formData.g_sp_bank_holder,
+            giftCardName: getGiftCardNameByCode(Number(this.formData.g_sp_gitcard_code))
         }
     }
 
@@ -103,7 +105,7 @@ export interface CustomerInfo {
     email: string; //이메일 주소
     zipCode: string; //우편번호
     address: string; //주소
-    birthDate: number //생년월일 YYMMDD
+    securityNumber: string //주민번호
 }
 
 export interface ProductInfo {
@@ -116,9 +118,11 @@ export interface ProductInfo {
 }
 
 export interface PaybackInfo {
+    paybackMethod: string; //사은품 종류
     bankName: string; // 사은품 지급 은행
     accountNumber: string; //사은품 지급 계좌
     accountHolder: string; //사은품 지급 계좌 예금주
+    giftCardName: string; //사은품 상품권 이름
 }
 
 export interface PaymentInfo {
