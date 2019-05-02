@@ -59,18 +59,12 @@ export default class RegisterService {
             카드주 : ${paymentInfo.cardHolder} <br>`;
         }
 
-        body+= `<h3>사은품 정보</h3>`;
+        body+= `<h3>사은품 정보</h3>
+        상품권 종류 : ${paybackInfo.giftCardName} <br>
+        계좌번호 : <${paybackInfo.bankName}> ${paybackInfo.accountNumber} <br>
+        예금주 : ${paybackInfo.accountHolder} <br>
 
-        if(paybackInfo.paybackMethod === '현금') {
-            body += `${paybackInfo.bankName} : ${paybackInfo.accountNumber} <br>
-            예금주 : ${paybackInfo.accountHolder} <br>`;
-        }
-
-        if(paybackInfo.paybackMethod === '상품권') {
-            body += `상품권 종류 : ${paybackInfo.giftCardName} <br>`;
-        }
-
-        body += `<h3>상품정보</h3>
+        <h3>상품 정보</h3>
         약정 기간 : ${productInfo.countractDue} <br>`;
 
         if(productInfo.internet !== '') {

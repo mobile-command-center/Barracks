@@ -35,7 +35,6 @@ const LGSampleData: originFormData = {
     g_card_gigan1: '2',
     g_card_holder: '김진구',
     content_copy: 'Y',
-    g_sp_method: '상품권',
     g_sp_bank_code: '3',
     g_sp_bank_acount: '620-2023307-853',
     g_sp_bank_holder: '김진구',

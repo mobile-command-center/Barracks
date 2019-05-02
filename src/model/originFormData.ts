@@ -28,7 +28,6 @@ export default interface originFormData {
     g_card_gigan1: string; //카드 유효기간 월
     g_card_holder: string; //카드 주
     content_copy: string; //필요없는 값, 위와 같은 여부
-    g_sp_method: string; //사은품, 현금
     g_sp_bank_code: string; //3
     g_sp_bank_acount: string; //620-2023307-853
     g_sp_bank_holder: string; //김진구

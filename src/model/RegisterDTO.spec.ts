@@ -33,7 +33,6 @@ const LGSampleData: originFormData = {
     g_card_gigan1: '2',
     g_card_holder: '김진구',
     content_copy: 'Y',
-    g_sp_method: '사은품',
     g_sp_bank_code: '3',
     g_sp_bank_acount: '620-2023307-853',
     g_sp_bank_holder: '김진구',
@@ -103,7 +102,6 @@ describe('RegisterDTO', () => {
     it('getter PaybackInfo', () => {
         const paybackInfo: PaybackInfo = registerDTO.PaybackInfo;
 
-        expect(paybackInfo.paybackMethod).to.equal(LGSampleData.g_sp_method);
         expect(paybackInfo.bankName).to.equal(getBankNameByBankCode(Number(LGSampleData.g_sp_bank_code)));
         expect(paybackInfo.accountNumber).to.equal(LGSampleData.g_sp_bank_acount);
         expect(paybackInfo.accountHolder).to.equal(LGSampleData.g_sp_bank_holder);

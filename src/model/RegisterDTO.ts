@@ -60,7 +60,6 @@ export default class RegisterDTO {
      */
     public get PaybackInfo(): PaybackInfo {
         return {
-            paybackMethod: this.formData.g_sp_method,
             bankName : getBankNameByBankCode(Number(this.formData.g_sp_bank_code)),
             accountNumber : this.formData.g_sp_bank_acount,
             accountHolder : this.formData.g_sp_bank_holder,
@@ -118,7 +117,6 @@ export interface ProductInfo {
 }
 
 export interface PaybackInfo {
-    paybackMethod: string; //사은품 종류
     bankName: string; // 사은품 지급 은행
     accountNumber: string; //사은품 지급 계좌
     accountHolder: string; //사은품 지급 계좌 예금주
