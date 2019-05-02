@@ -64,7 +64,7 @@ export default class RegisterDTO {
             bankName : getBankNameByBankCode(Number(this.formData.g_sp_bank_code)),
             accountNumber : this.formData.g_sp_bank_acount,
             accountHolder : this.formData.g_sp_bank_holder,
-            giftCardName: getGiftCardNameByCode(Number(this.formData.g_sp_gitcard_code))
+            giftCardName: getGiftCardNameByCode(Number(this.formData.g_sp_giftcard_code))
         }
     }
 

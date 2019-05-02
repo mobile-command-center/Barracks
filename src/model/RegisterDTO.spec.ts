@@ -37,7 +37,7 @@ const LGSampleData: originFormData = {
     g_sp_bank_code: '3',
     g_sp_bank_acount: '620-2023307-853',
     g_sp_bank_holder: '김진구',
-    g_sp_gitcard_code: '1',
+    g_sp_giftcard_code: '1',
     board_internet: '와이파이기본_광랜안심(100M)',
     board_tv: 'TV베이직 - 183채널',
     board_tel: 'WiFi(무선)전화 - 번호이동Y',
@@ -107,7 +107,7 @@ describe('RegisterDTO', () => {
         expect(paybackInfo.bankName).to.equal(getBankNameByBankCode(Number(LGSampleData.g_sp_bank_code)));
         expect(paybackInfo.accountNumber).to.equal(LGSampleData.g_sp_bank_acount);
         expect(paybackInfo.accountHolder).to.equal(LGSampleData.g_sp_bank_holder);
-        expect(paybackInfo.giftCardName).to.equal(getGiftCardNameByCode(Number(LGSampleData.g_sp_gitcard_code)));
+        expect(paybackInfo.giftCardName).to.equal(getGiftCardNameByCode(Number(LGSampleData.g_sp_giftcard_code)));
     });
 
     it('getter TelephoneContractInfo', () => {
