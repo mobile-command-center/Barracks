@@ -171,3 +171,16 @@ export function getBankNameByBankCode(bankCode: number): string {
             return '오류';
     }
 }
+
+export function getGiftCardNameByCode(giftCardCode: number) {
+    switch(giftCardCode) {
+        case 0:
+            return '미선택';
+        case 1:
+            return '신세계 상품권';
+        case 2:
+            return '홈플러스 상품권';
+        default:
+            return '오류';
+    }
+}

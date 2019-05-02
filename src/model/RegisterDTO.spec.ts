@@ -1,7 +1,7 @@
 import {expect} from 'chai';
 import originFormData from './originFormData';
 import RegisterDTO, { CustomerInfo, ProductInfo, PaybackInfo, PaymentInfo, TelephoneContractInfo } from './RegisterDTO';
-import { getBankNameByBankCode, getCardNameByCardCode } from '../util/FinancialUtil';
+import { getBankNameByBankCode, getCardNameByCardCode, getGiftCardNameByCode } from '../util/FinancialUtil';
 
 const LGSampleData: originFormData = {
     vendor: 'LG',
@@ -33,9 +33,11 @@ const LGSampleData: originFormData = {
     g_card_gigan1: '2',
     g_card_holder: '김진구',
     content_copy: 'Y',
+    g_sp_method: '사은품',
     g_sp_bank_code: '3',
     g_sp_bank_acount: '620-2023307-853',
     g_sp_bank_holder: '김진구',
+    g_sp_giftcard_code: '1',
     board_internet: '와이파이기본_광랜안심(100M)',
     board_tv: 'TV베이직 - 183채널',
     board_tel: 'WiFi(무선)전화 - 번호이동Y',
@@ -101,9 +103,11 @@ describe('RegisterDTO', () => {
     it('getter PaybackInfo', () => {
         const paybackInfo: PaybackInfo = registerDTO.PaybackInfo;
 
+        expect(paybackInfo.paybackMethod).to.equal(LGSampleData.g_sp_method);
         expect(paybackInfo.bankName).to.equal(getBankNameByBankCode(Number(LGSampleData.g_sp_bank_code)));
         expect(paybackInfo.accountNumber).to.equal(LGSampleData.g_sp_bank_acount);
         expect(paybackInfo.accountHolder).to.equal(LGSampleData.g_sp_bank_holder);
+        expect(paybackInfo.giftCardName).to.equal(getGiftCardNameByCode(Number(LGSampleData.g_sp_giftcard_code)));
     });
 
     it('getter TelephoneContractInfo', () => {

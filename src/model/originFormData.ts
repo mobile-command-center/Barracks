@@ -28,9 +28,11 @@ export default interface originFormData {
     g_card_gigan1: string; //카드 유효기간 월
     g_card_holder: string; //카드 주
     content_copy: string; //필요없는 값, 위와 같은 여부
+    g_sp_method: string; //사은품, 현금
     g_sp_bank_code: string; //3
     g_sp_bank_acount: string; //620-2023307-853
     g_sp_bank_holder: string; //김진구
+    g_sp_giftcard_code: string; //1, 2
     board_internet: string; //와이파이기본_광랜안심(100M)
     board_tv: string; //TV베이직 - 183채널
     board_tel: string; //WiFi(무선)전화 - 번호이동Y
