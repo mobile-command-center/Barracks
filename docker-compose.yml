@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+  barracks:
+    container_name: barracks
+    build: .
+    image: barracks:1.0
+    ports:
+      - "3000:3000"
+    networks: 
+      - ajungweb
+
+networks:
+  ajungweb:
+    name: ajungweb
