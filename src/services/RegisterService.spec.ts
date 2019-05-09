@@ -22,7 +22,8 @@ const LGSampleData: originFormData = {
     emailCheck: 'msn.com',
     c_zipcode1: '463',
     c_zipcode2: '894',
-    c_address: '경기 성남시 분당구 동판교로',
+    c_address: '경기 성남시 분당구 동판교로 336',
+    c_address2: '봇들9단지 902동 309호',
     c_jumin1: '880512',
     c_jumin2: '1674326',
     g_payment_method: '카드',
@@ -80,7 +81,7 @@ describe('Register Service', () => {
     it('send email', done => {
         const mailOptions = {
             from: 'support@ajungweb.co.kr',
-            to: 'myraous@naver.com',
+            to: 'myraous@gmail.com',
         };
 
         registerService.setRegisterDTO(new RegisterDTO(LGSampleData));

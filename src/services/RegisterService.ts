@@ -46,7 +46,7 @@ export default class RegisterService {
             휴대폰 : ${customerInfo.mobileCarrier} ${customerInfo.mobileNumber} (${customerInfo.mobileAuth ? '본인': '본안아님'}) <br>
             비상연락처 : ${customerInfo.emgencyNumber} <br>
             이메일 : ${customerInfo.email} <br>
-            주소 : ${customerInfo.zipCode} ${customerInfo.address} <br>
+            주소 : ${customerInfo.zipCode} ${customerInfo.address} ${customerInfo.address2}<br>
             약관 동의 : <input type="checkbox" checked="${this._registerDTO.AgreeContrat ? 'checked' : ''}"><br>
             
             <h3>납부 정보 (${paymentInfo.paymentMethod})</h3>`;

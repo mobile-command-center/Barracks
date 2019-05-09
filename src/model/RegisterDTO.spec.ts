@@ -20,7 +20,8 @@ const LGSampleData: originFormData = {
     emailCheck: 'msn.com',
     c_zipcode1: '463',
     c_zipcode2: '894',
-    c_address: '경기 성남시 분당구 동판교로',
+    c_address: '경기 성남시 분당구 동판교로 336',
+    c_address2: '봇들9단지 902동 309호',
     c_jumin1: '880512',
     c_jumin2: '1682317',
     g_payment_method: '카드',
@@ -72,6 +73,7 @@ describe('RegisterDTO', () => {
         expect(customerInfo.email).to.equal(`${LGSampleData.c_email1}@${LGSampleData.c_email2}`);
         expect(customerInfo.zipCode).to.equal(`${LGSampleData.c_zipcode1}-${LGSampleData.c_zipcode2}`);
         expect(customerInfo.address).to.equal(LGSampleData.c_address);
+        expect(customerInfo.address2).to.equal(LGSampleData.c_address2);
         expect(customerInfo.securityNumber).to.equal(`${LGSampleData.c_jumin1}${LGSampleData.c_jumin2}`);
     });
 
