@@ -16,6 +16,7 @@ export default interface originFormData {
     c_zipcode1: string; //463
     c_zipcode2: string; //894
     c_address: string; //대구시 동구 신천3동 화성파크드림 133동 1201호
+    c_address2: string; //133동 1201호
     c_jumin1: string; //880512
     c_jumin2: string; //1672938
     g_payment_method: string; //은행

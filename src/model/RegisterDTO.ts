@@ -26,6 +26,7 @@ export default class RegisterDTO {
             email: `${this.formData.c_email1}@${this.formData.c_email2}`,
             zipCode: `${this.formData.c_zipcode1}-${this.formData.c_zipcode2}`,
             address: this.formData.c_address,
+            address2: this.formData.c_address2,
             securityNumber: `${this.formData.c_jumin1}${this.formData.c_jumin2}`
         }
     }
@@ -104,6 +105,7 @@ export interface CustomerInfo {
     email: string; //이메일 주소
     zipCode: string; //우편번호
     address: string; //주소
+    address2: string; //상세 주소
     securityNumber: string //주민번호
 }
 
